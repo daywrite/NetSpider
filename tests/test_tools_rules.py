@@ -24,11 +24,14 @@ class Test(unittest.TestCase):
         self.assertEqual(2, utils_gotcode_rule(rtypeEnum.fitment.name).gotcode('精装修'))
         self.assertEqual(5, utils_gotcode_rule(rtypeEnum.fitment.name).gotcode('毛坯'))
         self.assertEqual(0, utils_gotcode_rule(rtypeEnum.fitment.name).gotcode('哈哈'))
-        self.assertEqual(1, utils_gotcode_rule(rtypeEnum.fitment.name, '', 1).gotcode('哈哈'))
+        self.assertEqual(1, utils_gotcode_rule(rtypeEnum.fitment.name, default=1).gotcode('哈哈'))
 
         self.assertEqual(0, utils_gotcode_rule(rtypeEnum.own.name, ['哈哈', '嘿嘿', '呵呵']).gotcode('哈哈'))
         self.assertEqual(0, utils_gotcode_rule(rtypeEnum.own.name, ['哈哈', '嘿嘿', '呵呵']).gotcode('拉拉'))
-        self.assertEqual(2, utils_gotcode_rule(rtypeEnum.own.name, ['哈哈', '嘿嘿', '呵呵'], 2).gotcode('拉拉'))
+        self.assertEqual(2, utils_gotcode_rule(rtypeEnum.own.name, ['哈哈', '嘿嘿', '呵呵'], default=2).gotcode('拉拉'))
+
+        self.assertEqual(253, utils_gotcode_rule(rtypeEnum.floor.name, default=0, begin=252).gotcode('低'))
+        self.assertEqual(2, utils_gotcode_rule(rtypeEnum.floor.name, default=2, begin=252).gotcode('拉拉'))
 
 
 if __name__ == "__main__":
