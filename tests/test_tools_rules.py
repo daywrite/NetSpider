@@ -33,6 +33,9 @@ class Test(unittest.TestCase):
         self.assertEqual(253, utils_gotcode_rule(rtypeEnum.floor.name, default=0, begin=252).gotcode('低'))
         self.assertEqual(2, utils_gotcode_rule(rtypeEnum.floor.name, default=2, begin=252).gotcode('拉拉'))
 
+        self.assertEqual(1, utils_gotcode_rule(rtypeEnum.property.name).gotcode('住宅'))
+        self.assertEqual(1, utils_gotcode_rule(rtypeEnum.account.name).gotcode('月付'))
+
 
 if __name__ == "__main__":
     unittest.main()

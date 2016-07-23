@@ -17,6 +17,9 @@ class utils_gotcode_rule(object):
     _fitment = [fitmentEnum.不确定.name, fitmentEnum.不确定.name, fitmentEnum.精装修.name, fitmentEnum.中装修.name,
                 fitmentEnum.简装修.name, fitmentEnum.毛坯.name]
     _floor = [floorEnum.低.name, floorEnum.中.name, floorEnum.高.name]
+    _property=[propertyEnum.不确定.name,propertyEnum.住宅.name,propertyEnum.公寓.name,propertyEnum.别墅.name,propertyEnum.平房.name]
+    _account=[accountEnum.不确定.name,accountEnum.月付.name,accountEnum.季付.name,accountEnum.半年付.name,accountEnum.年付.name]
+
 
     def __init__(self, rtype=rtypeEnum.aspect.name, content=_aspect, **kwargs):
         self.content = content
@@ -39,6 +42,10 @@ class utils_gotcode_rule(object):
             self.content = self._fitment
         elif self.rtype == rtypeEnum.floor.name:
             self.content = self._floor
+        elif self.rtype == rtypeEnum.property.name:
+            self.content = self._property
+        elif self.rtype == rtypeEnum.account.name:
+            self.content = self._account
         else:
             self.content = self.content
 
