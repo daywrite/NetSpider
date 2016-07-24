@@ -7,7 +7,7 @@ Created on 2016-7-23
 '''
 
 from module.common.enum import *
-
+from module.tools.parameters import *
 
 # 可以用*keyword改变更灵活
 class utils_gotcode_rule(object):
@@ -20,7 +20,7 @@ class utils_gotcode_rule(object):
     _property=[propertyEnum.不确定.name,propertyEnum.住宅.name,propertyEnum.公寓.name,propertyEnum.别墅.name,propertyEnum.平房.name]
     _account=[accountEnum.不确定.name,accountEnum.月付.name,accountEnum.季付.name,accountEnum.半年付.name,accountEnum.年付.name]
 
-
+    @validParam(default=int)
     def __init__(self, rtype=rtypeEnum.aspect.name, content=_aspect, **kwargs):
         self.content = content
         self.rtype = rtype
