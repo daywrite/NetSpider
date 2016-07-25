@@ -9,6 +9,7 @@ Created on 2016-7-23
 from module.common.enum import *
 from module.tools.parameters import *
 
+
 # 可以用*keyword改变更灵活
 class utils_gotcode_rule(object):
     _aspect = [aspectEnum.不确定.name, aspectEnum.南北.name, aspectEnum.东西.name, aspectEnum.东南.name,
@@ -17,10 +18,12 @@ class utils_gotcode_rule(object):
     _fitment = [fitmentEnum.不确定.name, fitmentEnum.不确定.name, fitmentEnum.精装修.name, fitmentEnum.中装修.name,
                 fitmentEnum.简装修.name, fitmentEnum.毛坯.name]
     _floor = [floorEnum.低.name, floorEnum.中.name, floorEnum.高.name]
-    _property=[propertyEnum.不确定.name,propertyEnum.住宅.name,propertyEnum.公寓.name,propertyEnum.别墅.name,propertyEnum.平房.name]
-    _account=[accountEnum.不确定.name,accountEnum.月付.name,accountEnum.季付.name,accountEnum.半年付.name,accountEnum.年付.name]
+    _property = [propertyEnum.不确定.name, propertyEnum.住宅.name, propertyEnum.公寓.name, propertyEnum.别墅.name,
+                 propertyEnum.平房.name]
+    _account = [accountEnum.不确定.name, accountEnum.月付.name, accountEnum.季付.name, accountEnum.半年付.name,
+                accountEnum.年付.name]
 
-    @validParam(default=int)
+    @validParam(default=int, begin=int)
     def __init__(self, rtype=rtypeEnum.aspect.name, content=_aspect, **kwargs):
         self.content = content
         self.rtype = rtype

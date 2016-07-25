@@ -38,7 +38,7 @@ class Test(unittest.TestCase):
         self.assertEqual(1, utils_gotcode_rule(rtypeEnum.account.name).gotcode('月付'))
         self.assertEqual(100, utils_gotcode_rule(rtypeEnum.account.name,default=100).gotcode('哈哈'))
 
-        self.assertEqual(1, utils_gotcode_rule(rtypeEnum.property.name,default='w').gotcode('haha'))
+        # self.assertEqual(1, utils_gotcode_rule(rtypeEnum.property.name,default='w').gotcode('haha'))
 
 if __name__ == "__main__":
     unittest.main()
