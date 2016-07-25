@@ -23,7 +23,6 @@ class utils_gotcode_rule(object):
     _account = [accountEnum.不确定.name, accountEnum.月付.name, accountEnum.季付.name, accountEnum.半年付.name,
                 accountEnum.年付.name]
 
-    @validParam(default=int, begin=int)
     def __init__(self, rtype=rtypeEnum.aspect.name, content=_aspect, **kwargs):
         self.content = content
         self.rtype = rtype
