@@ -5,7 +5,8 @@
 Created on 2016-7-23
 @author: huaihuai
 '''
-
+# import sys
+# sys.path.append('D:\GXD工作\刘震项目\NetSpider\module\common')
 from module.common.enum import *
 from module.tools.parameters import *
 
@@ -69,3 +70,5 @@ class utils(object):
             return 1
         else:
             return 99
+if __name__ == '__main__':
+    print(utils_gotcode_rule().gotcode('南北'))
