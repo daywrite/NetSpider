@@ -5,24 +5,44 @@
 Created on 2016-7-27
 @author: huaihuai
 '''
-from xmlrpc.server import SimpleXMLRPCServer
+
+import threading
+import time
+from xmlrpc.server import SimpleXMLRPCServer, socketserver
 
 
-class Server(object):
+# RPC-多线程
+class RPCThreading(socketserver.ThreadingMixIn, SimpleXMLRPCServer):
+    pass
+
+
+# 全局锁
+global mutex
+mutex = threading._allocate_lock()
+
+
+class RPCMultithreading(object):
     def __init__(self, ip, port):
         self.ip = ip
         self.port = port
 
-    def Create(self):
-        return SimpleXMLRPCServer((self.ip, self.port))
+    def create(self):
+        server_object = Server()
+        server = RPCThreading((self.ip, self.port), logRequests=False)
+        server.allow_none = True
+        server.register_instance(server_object)
+        print('多线程RPC服务器已开启......')
+        server.serve_forever()
 
 
-def got_result(num):
-    return num + 1
+class Server(object):
+    def __init__(self):
+        pass
+
+    def got_result(self, num):
+        time.sleep(1)
+        return num + 1
 
 
 if __name__ == '__main__':
-    rpcserver = Server('127.0.0.1', 8000).Create()
-    print('服务已启动')
-    rpcserver.register_function(got_result, 'got_result')
-    rpcserver.serve_forever()
+    RPCMultithreading('127.0.0.1', 8000).create()
