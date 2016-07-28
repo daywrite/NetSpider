@@ -6,5 +6,6 @@ Created on 2016-7-22
 @author: huaihuai
 '''
 
-class gotpage():
+
+class get_page(object):
     print('123')
